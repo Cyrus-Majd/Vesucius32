@@ -1,0 +1,46 @@
+﻿#!/bin/bash
+
+
+# PROGRAM DEVELOPED BY:
+# Cyrus Majd
+# in contribution to HHSCST (Holmdel High School Cyber Security Team)
+
+route -n
+
+sudo route del -net DESTINATION gw GATEWAY netmask GENMASK dev INTERFACE
+
+sudo ip route flush
+
+
+# Remember** to change "DESTINATION", "GATEWAY", "GENMASK", and "INTERFACE" with
+# the appropriate values when running this program.
+
+
+spawn responder.sh
+
+#replace "pc1" with the computer’s name. You can find this under /etc/hostname
+
+expect "[sudo] password for pc1:"
+
+send "password"
+
+
+
+x="$1";
+
+y="$1";
+
+
+# "x" is an integer greater than 0 that makes the following loop never end
+# "y" is an integer used for the number of packets you want to send in each ping for the loop
+
+
+while [ $x -gt 0 ];
+    do
+
+        sudo route add -net 255.255.255.255 gw 255.255.255.255 netmask 255.255.255.255 dev enp0s3
+	#Pinging random stuff just to send out a ton of these junk broadcast requests
+        ping -c $y protocol.example.domain
+    done
+
+#The program never stops looping. Hopefully after a few times you end up overflowing some switches.

